@@ -83,4 +83,4 @@ public class BlockInit
 		
 		TestMod.LOGGER.info("ItemBlock registered");
 	}
-}
+} 
