@@ -41,7 +41,6 @@ import net.minecraftforge.registries.ObjectHolder;
 public class ItemInit 
 {	
 	public static final Item test_item = new Item(new Item.Properties().group(TestItemGroup.instance).rarity(Rarity.UNCOMMON));
-	@SuppressWarnings("deprecation")
 	public static final Item item_test = new Item(new Item.Properties().group(TestItemGroup.instance).rarity(Rarity.COMMON).food(new Food.Builder().hunger(10).saturation(10.0f).effect(new EffectInstance(Effects.GLOWING, 6000, 5), 1.0f).build()));
 	public static final Item item_item = new Item(new Item.Properties().group(TestItemGroup.instance).rarity(Rarity.COMMON).maxStackSize(0));
 	public static final Item ruby = new Item(new Item.Properties().group(TestItemGroup.instance).rarity(Rarity.RARE));

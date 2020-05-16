@@ -3,12 +3,8 @@ package com.darklions.testmod.objects.items;
 import java.util.List;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.entity.item.TNTEntity;
-import net.minecraft.entity.item.minecart.MinecartEntity;
+import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.IArmorMaterial;
@@ -26,7 +22,7 @@ public class XRayGogglesItem extends ArmorItem
 	{
 		super(materialIn, slot, builder);
 	}
-	/*
+	
 	@Override
 	public void onArmorTick(ItemStack stack, World world, PlayerEntity player) 
 	{
@@ -37,17 +33,12 @@ public class XRayGogglesItem extends ArmorItem
 		{
 			Entity entity = entityList.get(i);
 			
-			if(entity instanceof PlayerEntity || entity instanceof ItemEntity || entity instanceof ArrowEntity || entity instanceof TNTEntity || entity instanceof MinecartEntity)
+			if(entity instanceof MobEntity)
 			{
-				//Do nothing
-			}
-			else
-			{
-				((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.GLOWING, 20, 1));
+				((MobEntity) entity).addPotionEffect(new EffectInstance(Effects.GLOWING, 10, 1));
 			}
 		}
 		
 		super.onArmorTick(stack, world, player);
 	}
-	*/
 }
