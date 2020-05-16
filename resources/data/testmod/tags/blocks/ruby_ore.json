@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": 
+  [
+	"testmod:ruby_ore",
+	"testmod:end_ruby_ore",
+	"testmod:nether_ruby_ore"
+  ]
+}
