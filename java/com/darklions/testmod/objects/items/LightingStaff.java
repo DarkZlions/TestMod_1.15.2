@@ -3,11 +3,8 @@ package com.darklions.testmod.objects.items;
 import java.util.List;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.effect.LightningBoltEntity;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.entity.item.TNTEntity;
-import net.minecraft.entity.passive.fish.CodEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -42,18 +39,12 @@ public class LightingStaff extends Item
 				{	
 					Entity entity = entityList.get(i);
 					
-					if(entity != player)
+					if(entity instanceof MobEntity)
 					{	
-						if(entity instanceof ItemEntity || entity instanceof TNTEntity || entity instanceof CodEntity)
-						{
-						}
-						else
-						{
-							LightningBoltEntity lighting = new LightningBoltEntity(world, entity.getPosX(), entity.getPosY(), entity.getPosZ(), false);
-							ServerWorld serverworld = (ServerWorld) world;
-							serverworld.addLightningBolt(lighting);
-						    player.getCooldownTracker().setCooldown(this, 20);
-						}
+						LightningBoltEntity lighting = new LightningBoltEntity(world, entity.getPosX(), entity.getPosY(), entity.getPosZ(), false);
+						ServerWorld serverworld = (ServerWorld) world;
+						serverworld.addLightningBolt(lighting);
+						player.getCooldownTracker().setCooldown(this, 20);
 					}
 				}
 			}

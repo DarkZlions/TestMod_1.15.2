@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.darklions.testmod.init.BlockInit;
+import com.darklions.testmod.init.TileEntityInit;
 import com.darklions.testmod.world.gen.carvers.CustomWorldCarverGen;
 import com.darklions.testmod.world.gen.ore.CustomOreGen;
 
@@ -37,6 +38,8 @@ public class TestMod
 		
 		modEventBus.addListener(this::setup);
 		modEventBus.addListener(this::clientSetup);
+		
+		TileEntityInit.TILE_ENTITY_TYPES.register(modEventBus);
 		
 		INSTANCE = this;
 		MinecraftForge.EVENT_BUS.register(this);

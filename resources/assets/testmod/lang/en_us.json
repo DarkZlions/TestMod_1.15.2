@@ -27,6 +27,7 @@
 	"block.testmod.end_ruby_ore": "End Ruby Ore",
 	"block.testmod.nether_ruby_ore": "Nether Ruby Ore",
 	"block.testmod.eye_of_the_vision": "Eye of The Vision",
+	"block.testmod.quarry": "Quarry",
 	
 	"itemGroup.testtab": "Test Mod Tab"
 }

@@ -4,9 +4,9 @@ import com.darklions.testmod.TestMod;
 import com.darklions.testmod.TestMod.TestItemGroup;
 import com.darklions.testmod.objects.blocks.CustomOreBlocks;
 import com.darklions.testmod.objects.blocks.EyeOfVisionBlock;
+import com.darklions.testmod.objects.blocks.QuarryBlock;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.GlassBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -37,16 +37,17 @@ public class BlockInit
 	public static final Block end_ruby_ore = new CustomOreBlocks(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(5.0f, 6.0f).harvestTool(ToolType.PICKAXE).harvestLevel(3));
 	public static final Block eye_of_the_vision = new EyeOfVisionBlock(Block.Properties.create(Material.IRON).hardnessAndResistance(4.0f, 4.0f).harvestLevel(3).harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).lightValue(2));
 	public static final Block nether_ruby_ore = new CustomOreBlocks(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(5.0f, 6.0f).harvestTool(ToolType.PICKAXE).harvestLevel(3));
+	public static final Block tileentity_quarry = new QuarryBlock(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(1.0f));
 	/*
 	 * BlockItem
 	 */
 	public static final Item test_block_item = new BlockItem(test_block, new Item.Properties().group(TestItemGroup.instance).rarity(Rarity.EPIC));
-	@SuppressWarnings("deprecation")
 	public static final Item test_glass_item = new BlockItem(test_glass, new Item.Properties().group(TestItemGroup.instance).food(new Food.Builder().hunger(10).effect(new EffectInstance(Effects.SLOWNESS, 120, 1), 1.0f).build()));
 	public static final Item ruby_ore_item = new BlockItem(ruby_ore, new Item.Properties().group(TestItemGroup.instance));
 	public static final Item end_ruby_ore_item = new BlockItem(end_ruby_ore, new Item.Properties().group(TestItemGroup.instance));
 	public static final Item nether_ruby_ore_item = new BlockItem(nether_ruby_ore, new Item.Properties().group(TestItemGroup.instance));
 	public static final Item eye_of_the_vision_item = new BlockItem(eye_of_the_vision, new Item.Properties().group(TestItemGroup.instance).rarity(Rarity.EPIC));
+	public static final Item tileentity_quarry_item = new BlockItem(tileentity_quarry, new Item.Properties().group(TestItemGroup.instance).rarity(Rarity.RARE));
 	
 	
 	@SubscribeEvent
@@ -59,7 +60,8 @@ public class BlockInit
 			ruby_ore.setRegistryName(TestMod.location("ruby_ore")),
 			end_ruby_ore.setRegistryName(TestMod.location("end_ruby_ore")),
 			nether_ruby_ore.setRegistryName(TestMod.location("nether_ruby_ore")),
-			eye_of_the_vision.setRegistryName(TestMod.location("eye_of_the_vision"))
+			eye_of_the_vision.setRegistryName(TestMod.location("eye_of_the_vision")),
+			tileentity_quarry.setRegistryName(TestMod.location("quarry"))
 		);
 		
 		TestMod.LOGGER.info("Blocks registered");
@@ -75,7 +77,8 @@ public class BlockInit
 			ruby_ore_item.setRegistryName(TestMod.location("ruby_ore")),
 			end_ruby_ore_item.setRegistryName(TestMod.location("end_ruby_ore")),
 			nether_ruby_ore_item.setRegistryName(TestMod.location("nether_ruby_ore")),
-			eye_of_the_vision_item.setRegistryName(TestMod.location("eye_of_the_vision"))
+			eye_of_the_vision_item.setRegistryName(TestMod.location("eye_of_the_vision")),
+			tileentity_quarry_item.setRegistryName(TestMod.location("quarry"))
 		);
 		
 		TestMod.LOGGER.info("ItemBlock registered");
