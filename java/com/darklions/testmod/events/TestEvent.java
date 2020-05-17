@@ -14,7 +14,6 @@ import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
-import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;

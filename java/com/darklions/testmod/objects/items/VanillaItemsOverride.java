@@ -1,7 +1,7 @@
-package com.darklions.testmod;
+package com.darklions.testmod.objects.items;
+import com.darklions.testmod.TestMod;
 import com.darklions.testmod.TestMod.TestItemGroup;
 import com.darklions.testmod.enums.ICustomItemTier;
-import com.darklions.testmod.objects.items.AnimalLauncherItem;
 
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -16,11 +16,11 @@ import net.minecraftforge.registries.ObjectHolder;
 
 @Mod.EventBusSubscriber(modid = TestMod.MODID, bus = Bus.FORGE)
 @ObjectHolder("minecraft")
-public class Overrides 
+public class VanillaItemsOverride 
 {
 	
 	public static final Item diamond = register("diamond", new Item(new Item.Properties().group(ItemGroup.REDSTONE).rarity(Rarity.RARE)));
-	public static final Item stick = register("stick", new AnimalLauncherItem(new Item.Properties().group(ItemGroup.MISC).rarity(Rarity.UNCOMMON)));
+	public static final Item stick = register("stick", new AnimalLauncherItem(new Item.Properties().group(ItemGroup.MISC)));
 	public static final Item DIAMOND_SWORD = register("diamond_sword", new SwordItem(ICustomItemTier.TESTTIER, 3, -2.4F, (new Item.Properties()).group(TestItemGroup.instance).rarity(Rarity.EPIC)));
 	
 	private static Item register(String key, Item itemIn)
@@ -28,6 +28,7 @@ public class Overrides
 		return register(new ResourceLocation(key), itemIn);
 	}
 
+	@SuppressWarnings("deprecation")
 	private static Item register(ResourceLocation key, Item itemIn) 
 	{
 		if (itemIn instanceof BlockItem) 

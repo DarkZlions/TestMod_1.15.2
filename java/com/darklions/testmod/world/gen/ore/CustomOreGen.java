@@ -1,10 +1,7 @@
 package com.darklions.testmod.world.gen.ore;
 
-import java.util.function.Predicate;
-
 import com.darklions.testmod.init.BlockInit;
 
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;

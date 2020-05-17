@@ -2,12 +2,7 @@ package com.darklions.testmod.objects.items;
 
 import java.util.List;
 
-import com.darklions.testmod.TestMod;
-import com.darklions.testmod.init.BlockInit;
-import com.darklions.testmod.util.helpers.CustomRayTraceResult;
 import com.darklions.testmod.util.helpers.KeyBoardHelper;
-import com.darklions.testmod.world.gen.CustomWorld;
-
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -21,15 +16,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.RayTraceContext;
-import net.minecraft.util.math.RayTraceContext.FluidMode;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
 public class CustomWandItem extends Item

@@ -12,11 +12,9 @@ import net.minecraft.world.World;
 
 public class DragonBallStaff extends Item
 {
-	private int power;
-	public DragonBallStaff(int power, Properties properties) 
+	public DragonBallStaff(Properties properties) 
 	{
 		super(properties);
-		this.power = power;
 	}
 	
 	@Override

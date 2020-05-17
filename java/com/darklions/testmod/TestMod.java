@@ -8,7 +8,6 @@ import com.darklions.testmod.init.TileEntityInit;
 import com.darklions.testmod.world.gen.carvers.CustomWorldCarverGen;
 import com.darklions.testmod.world.gen.ore.CustomOreGen;
 
-import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -16,7 +15,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -47,7 +45,7 @@ public class TestMod
 	@SubscribeEvent
 	public void setup(final FMLCommonSetupEvent event)
 	{
-		
+
 	}
 	
 	private void clientSetup(final FMLClientSetupEvent event)

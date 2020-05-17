@@ -17,17 +17,14 @@ import com.darklions.testmod.objects.items.XRayGogglesItem;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorItem;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.Food;
-import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemTier;
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.Rarity;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
-import net.minecraft.item.Item.Properties;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraftforge.event.RegistryEvent;
@@ -59,7 +56,7 @@ public class ItemInit
 	public static final Item lighting_wand = new LightingStaff(new Item.Properties().group(TestItemGroup.instance));
 	public static final Item debug_le_stick = new StickOfDebug(new Item.Properties().group(TestItemGroup.instance));
 	public static final Item chickenlauncher = new AnimalLauncherItem(new Item.Properties().group(TestItemGroup.instance));
-	public static final Item dragonfireballwand = new DragonBallStaff(0, new Item.Properties().group(TestItemGroup.instance).rarity(Rarity.EPIC));
+	public static final Item dragonfireballwand = new DragonBallStaff(new Item.Properties().group(TestItemGroup.instance).rarity(Rarity.EPIC));
 	
 	//Armour
 	public static final Item ruby_helmet = new CustomArmorItem(ICustomArmorTier.RUBY, EquipmentSlotType.HEAD, new Item.Properties().group(TestItemGroup.instance).rarity(Rarity.RARE));
@@ -68,7 +65,6 @@ public class ItemInit
 	public static final Item ruby_boots = new CustomArmorItem(ICustomArmorTier.RUBY, EquipmentSlotType.FEET, new Item.Properties().group(TestItemGroup.instance).rarity(Rarity.RARE));
 	public static final Item xray_googles = new XRayGogglesItem(ICustomArmorTier.RUBY, EquipmentSlotType.HEAD, new Item.Properties().group(TestItemGroup.instance).rarity(Rarity.UNCOMMON));
 	//Items
-	
 	@SubscribeEvent
 	public static void onRegisterItems(final RegistryEvent.Register<Item> event)
 	{
