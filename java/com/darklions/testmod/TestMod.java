@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.darklions.testmod.init.BlockInit;
 import com.darklions.testmod.init.TileEntityInit;
+import com.darklions.testmod.objects.items.StickOfDebug;
 import com.darklions.testmod.world.gen.VanillaGenSettingsOverride;
 import com.darklions.testmod.world.gen.carvers.CustomWorldCarverGen;
 import com.darklions.testmod.world.gen.ore.CustomOreGen;
@@ -46,7 +47,7 @@ public class TestMod
 	@SubscribeEvent
 	public void setup(final FMLCommonSetupEvent event)
 	{
-
+		VanillaGenSettingsOverride.overrideSettings();
 	}
 	
 	private void clientSetup(final FMLClientSetupEvent event)
@@ -67,7 +68,7 @@ public class TestMod
 		CustomOreGen.setupEndOreGeneration();
 		CustomOreGen.setupNetherOreGeneration();
 		CustomWorldCarverGen.setupEndCarverGeneration();
-		VanillaGenSettingsOverride.overrideSettings();
+		//VanillaGenSettingsOverride.overrideSettings();
 	}
 	
 	public static class TestItemGroup extends ItemGroup
