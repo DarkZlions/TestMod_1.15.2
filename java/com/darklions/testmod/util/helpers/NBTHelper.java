@@ -34,6 +34,7 @@ public class NBTHelper
 		compound.putInt("x", o.x);
 		compound.putInt("y", o.y);
 		compound.putInt("z", o.z);
+		compound.putFloat("returnF", o.returnF);
 		return compound;
 	}
 	

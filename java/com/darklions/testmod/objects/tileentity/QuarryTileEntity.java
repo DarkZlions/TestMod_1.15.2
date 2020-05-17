@@ -1,5 +1,7 @@
 package com.darklions.testmod.objects.tileentity;
 
+import java.util.List;
+
 import javax.annotation.Nullable;
 
 import com.darklions.testmod.init.TileEntityInit;
@@ -8,6 +10,7 @@ import com.darklions.testmod.util.helpers.NBTHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -15,12 +18,14 @@ import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.StringTextComponent;
 
 public class QuarryTileEntity extends TileEntity implements ITickableTileEntity
 {
 	
 	public int x, y, z, tick;
 	boolean initialized = false;
+	public float returnF = 1;
 
 	public QuarryTileEntity(final TileEntityType<?> tileEntityTypeIn) 
 	{
@@ -62,6 +67,12 @@ public class QuarryTileEntity extends TileEntity implements ITickableTileEntity
 
 	private void execute()
 	{
+		List<? extends PlayerEntity> players = world.getPlayers();
+		for(PlayerEntity player : players)
+		{
+			String message = Float.toString(returnF);
+			player.sendMessage(new StringTextComponent(message));
+		}
 		int index = 0;
 		Block[] blocksRemoved = new Block[9];
 		for(int x = 0; x < 3; x++)
@@ -71,6 +82,7 @@ public class QuarryTileEntity extends TileEntity implements ITickableTileEntity
 				BlockPos posToBreak = new BlockPos(this.x + x, this.y, this.z + z);
 				blocksRemoved[index] = this.world.getBlockState(posToBreak).getBlock();
 				destroyBlock(posToBreak, true, null);
+				returnF++;
 				index++;
 			}
 		}
@@ -112,6 +124,7 @@ public class QuarryTileEntity extends TileEntity implements ITickableTileEntity
 			this.x = initValues.getInt("x");
 			this.y = initValues.getInt("y");
 			this.z = initValues.getInt("z");
+			this.returnF = initValues.getFloat("returnF");
 			this.tick = 0;
 			initialized = true;
 			return;

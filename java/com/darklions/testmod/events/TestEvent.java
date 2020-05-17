@@ -3,17 +3,19 @@ package com.darklions.testmod.events;
 import com.darklions.testmod.TestMod;
 
 import net.minecraft.entity.CreatureEntity;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
-import net.minecraft.entity.monster.BlazeEntity;
-import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.entity.passive.fish.CodEntity;
+import net.minecraft.entity.projectile.AbstractArrowEntity;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -56,6 +58,19 @@ public class TestEvent
 					System.out.println(e);
 				}
 			}
+		}
+	}
+	
+	@SubscribeEvent
+	public static void ProjecttileImpactEvent(ProjectileImpactEvent event)
+	{
+		Entity entity = event.getEntity();
+		World world = entity.getEntityWorld();
+		
+		if(entity instanceof AbstractArrowEntity)
+		{
+			world.createExplosion(entity, DamageSource.causeExplosionDamage(new Explosion(world, entity, 0, 0, 0, 0, false, null)), entity.getPosX(), entity.getPosY(), entity.getPosZ(), 5, true, Explosion.Mode.BREAK);
+			entity.remove();
 		}
 	}
 }
