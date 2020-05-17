@@ -111,5 +111,4 @@ public class EyeOfVisionBlock extends Block
 		
 		return ActionResultType.SUCCESS;
 	}
-	
 }

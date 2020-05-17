@@ -3,7 +3,7 @@ package com.darklions.testmod.util.helpers;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.darklions.testmod.tileentity.QuarryTileEntity;
+import com.darklions.testmod.objects.tileentity.QuarryTileEntity;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

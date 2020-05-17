@@ -1,4 +1,4 @@
-package com.darklions.testmod.tileentity;
+package com.darklions.testmod.objects.tileentity;
 
 import javax.annotation.Nullable;
 

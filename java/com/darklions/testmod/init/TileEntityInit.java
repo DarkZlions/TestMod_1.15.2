@@ -1,7 +1,7 @@
 package com.darklions.testmod.init;
 
 import com.darklions.testmod.TestMod;
-import com.darklions.testmod.tileentity.QuarryTileEntity;
+import com.darklions.testmod.objects.tileentity.QuarryTileEntity;
 
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.RegistryObject;
