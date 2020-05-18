@@ -67,7 +67,7 @@ public class TestMod
 		CustomOreGen.setupEndOreGeneration();
 		CustomOreGen.setupNetherOreGeneration();
 		CustomWorldCarverGen.setupEndCarverGeneration();
-		VanillaGenSettingsOverride.overrideBiomeProvider();
+		VanillaGenSettingsOverride.overrideSettings();
 	}
 	
 	public static class TestItemGroup extends ItemGroup
