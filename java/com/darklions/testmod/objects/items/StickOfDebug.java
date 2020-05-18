@@ -33,6 +33,18 @@ public class StickOfDebug extends Item
 		{
 
 			playerIn.sendMessage(new StringTextComponent(s));
+			try 
+			{
+				Class<?> genClass = Class.forName("net.minecraft.world.gen.GenerationSettings");
+				GenerationSettings gen = (GenerationSettings) genClass.newInstance();
+				Field field = genClass.getDeclaredField("defaultBlock");
+				field.setAccessible(true);
+				playerIn.sendMessage(new StringTextComponent(field.get(gen).toString()));
+			} 
+			catch (Exception e) 
+			{
+				e.printStackTrace();
+			}
 			return ActionResult.resultSuccess(itemstack);
 		}
 	}

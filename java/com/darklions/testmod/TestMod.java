@@ -52,7 +52,7 @@ public class TestMod
 	
 	private void clientSetup(final FMLClientSetupEvent event)
 	{
-
+		VanillaGenSettingsOverride.overrideSettings();
 	}
 	
 	@SubscribeEvent
@@ -68,7 +68,7 @@ public class TestMod
 		CustomOreGen.setupEndOreGeneration();
 		CustomOreGen.setupNetherOreGeneration();
 		CustomWorldCarverGen.setupEndCarverGeneration();
-		//VanillaGenSettingsOverride.overrideSettings();
+		VanillaGenSettingsOverride.overrideSettings();
 	}
 	
 	public static class TestItemGroup extends ItemGroup

@@ -14,21 +14,26 @@ public class VanillaGenSettingsOverride
 	{
 		try 
 		{
-			StickOfDebug.s = new String("Stage 0");
-			Class<?> GenClass = GenerationSettings.class;
-			Field field = GenClass.getDeclaredField("defaultBlock");
+
+			Class<?> GenClass = Class.forName("net.minecraft.world.gen.GenerationSettings");
+			Field defaultBlockField = GenClass.getDeclaredField("defaultBlock");
+			Field villageDistanceField = GenClass.getDeclaredField("villageDistance");
+			
 			GenerationSettings gen = (GenerationSettings) GenClass.newInstance();
-			StickOfDebug.s = new String("Stage 1");
-			field.setAccessible(true);
-			StickOfDebug.s = new String("Stage 2");
+
+			defaultBlockField.setAccessible(true);
+			villageDistanceField.setAccessible(true);
+
 			Field modifiers = Field.class.getDeclaredField("modifiers");
-			StickOfDebug.s = new String("Stage 3");
+
 			modifiers.setAccessible(true);
-			StickOfDebug.s = new String("Stage 4");
-			modifiers.setInt(field,  field.getModifiers() & ~Modifier.FINAL);
-			StickOfDebug.s = new String("Stage 5");
-			field.set(gen, Blocks.DIAMOND_BLOCK.getDefaultState());
-			StickOfDebug.s = new String("Stage 6");
+
+			modifiers.setInt(defaultBlockField,  defaultBlockField.getModifiers() & ~Modifier.FINAL);
+			modifiers.setInt(villageDistanceField,  villageDistanceField.getModifiers() & ~Modifier.FINAL);
+
+			defaultBlockField.set(gen, Blocks.DIAMOND_BLOCK.getDefaultState());
+			villageDistanceField.setInt(gen, 1);
+			StickOfDebug.s = new String(defaultBlockField.get(gen).toString());
 		}
 		catch(Exception e)
 		{
