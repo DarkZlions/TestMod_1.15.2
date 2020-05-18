@@ -10,6 +10,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.provider.OverworldBiomeProvider;
 import net.minecraft.world.gen.GenerationSettings;
 
 public class StickOfDebug extends Item
@@ -35,15 +36,15 @@ public class StickOfDebug extends Item
 			playerIn.sendMessage(new StringTextComponent(s));
 			try 
 			{
-				Class<?> genClass = Class.forName("net.minecraft.world.gen.GenerationSettings");
-				GenerationSettings gen = (GenerationSettings) genClass.newInstance();
-				Field field = genClass.getDeclaredField("defaultBlock");
+				Class<?> clazz = Class.forName("net.minecraft.world.biome.provider.OverworldBiomeProvider");
+				OverworldBiomeProvider instance = (OverworldBiomeProvider) clazz.newInstance();
+				Field field = clazz.getDeclaredField("field_226847_e_");
 				field.setAccessible(true);
-				playerIn.sendMessage(new StringTextComponent(field.get(gen).toString()));
+				playerIn.sendMessage(new StringTextComponent(field.get(instance).toString()));
 			} 
 			catch (Exception e) 
 			{
-				e.printStackTrace();
+				playerIn.sendMessage(new StringTextComponent(e.toString()));
 			}
 			return ActionResult.resultSuccess(itemstack);
 		}
