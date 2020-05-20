@@ -1,5 +1,6 @@
 package com.darklions.testmod.objects.blocks;
 
+import java.util.Random;
 import java.util.stream.Stream;
 
 import net.minecraft.block.Block;
@@ -8,6 +9,7 @@ import net.minecraft.block.HorizontalBlock;
 import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.util.ActionResultType;
@@ -23,7 +25,10 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class EyeOfVisionBlock extends Block
 {
@@ -104,11 +109,22 @@ public class EyeOfVisionBlock extends Block
 	{
 		if(!worldIn.isRemote())
 		{
-			ServerWorld serverWorld = (ServerWorld) worldIn;
-			LightningBoltEntity entity = new LightningBoltEntity(worldIn, pos.getX(), pos.getY(), pos.getZ(), false);
-			serverWorld.addLightningBolt(entity);
+			player.changeDimension(worldIn.dimension.getType() == DimensionType.THE_END ? DimensionType.OVERWORLD : DimensionType.THE_END);
 		}
 		
 		return ActionResultType.SUCCESS;
+	}
+	
+	@Override
+	@OnlyIn(Dist.CLIENT)
+	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) 
+	{
+	      double d0 = (double)pos.getX() + (double)rand.nextFloat();
+	      double d1 = (double)pos.getY() + 1.0D;
+	      double d2 = (double)pos.getZ() + (double)rand.nextFloat();
+	      double d3 = 0.0D;
+	      double d4 = 0.0D;
+	      double d5 = 0.0D;
+	      worldIn.addParticle(ParticleTypes.PORTAL, (double)pos.getX() + (double)rand.nextFloat(), (double)pos.getY() + 0.3D + (double)rand.nextFloat(), (double)pos.getZ() + (double)rand.nextFloat(), 0.0D, 0.0D, 0.0D);
 	}
 }
