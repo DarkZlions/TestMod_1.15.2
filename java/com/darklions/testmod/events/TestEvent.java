@@ -7,6 +7,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.goal.Goal.Flag;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.passive.fish.CodEntity;
@@ -17,6 +18,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
@@ -51,7 +54,11 @@ public class TestEvent
 				try
 				{
 					entity.getAttributes().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(entity.getMaxHealth() / 3);
-					entity.targetSelector.addGoal(-1, new MeleeAttackGoal((CreatureEntity)entity, entity.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getBaseValue() * 5, false));	
+					
+					if(entity instanceof CreatureEntity)
+					{
+						entity.targetSelector.addGoal(-1, new MeleeAttackGoal((CreatureEntity)entity, entity.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getBaseValue() * 5, false));	
+					}
 				}
 				catch(Exception e)
 				{
@@ -60,6 +67,35 @@ public class TestEvent
 			}
 		}
 	}
+	
+	/*
+	@SubscribeEvent
+	public static void EntityAttackChanger(LivingSetAttackTargetEvent event)
+	{
+		Entity entity = event.getEntity();
+		try 
+		{
+			if(entity instanceof MobEntity)
+			{
+				Entity target = event.getTarget();
+				MobEntity mobEntity = (MobEntity) entity;
+				if(target.getType() == entity.getType())
+				{			
+					mobEntity.targetSelector.disableFlag(Flag.TARGET);
+					mobEntity.setAttackTarget(null);
+				}
+				else
+				{
+					mobEntity.targetSelector.enableFlag(Flag.TARGET);
+				}
+			}
+		}
+		catch(Exception e)
+		{
+			TestMod.LOGGER.info(e);
+		}	
+	}
+	*/
 	
 	@SubscribeEvent
 	public static void ProjecttileImpactEvent(ProjectileImpactEvent event)
