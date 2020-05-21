@@ -1,6 +1,6 @@
 package com.darklions.testmod.util.MathHelpers;
 
-public class CalcNumbers 
+public class CalcHelpers 
 {
 	public float[] CalcBiggerNumber(float f1, float f2)
 	{
@@ -33,5 +33,17 @@ public class CalcNumbers
 		}
 		else
 			return false;
+	}
+	
+	public double Clamp(double dIn, double min, double max)
+	{
+		if(dIn >= min && dIn <= max)
+			return dIn;
+		else if (dIn <= min && dIn <= max)
+			return min;
+		else if(dIn >= min && dIn >= max)
+			return max;
+		else
+			return dIn;
 	}
 }

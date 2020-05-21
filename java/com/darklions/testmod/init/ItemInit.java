@@ -12,7 +12,7 @@ import com.darklions.testmod.objects.items.CustomWandItem;
 import com.darklions.testmod.objects.items.DragonBallStaff;
 import com.darklions.testmod.objects.items.FireBallStaff;
 import com.darklions.testmod.objects.items.LightingStaff;
-import com.darklions.testmod.objects.items.StaffOfCreationItem;
+import com.darklions.testmod.objects.items.BookOfCreation;
 import com.darklions.testmod.objects.items.StickOfDebug;
 import com.darklions.testmod.objects.items.XRayGogglesItem;
 
@@ -57,7 +57,7 @@ public class ItemInit
 	public static final Item lighting_wand = new LightingStaff(new Item.Properties().group(TestItemGroup.instance));
 	public static final Item debug_le_stick = new StickOfDebug(new Item.Properties().group(TestItemGroup.instance));
 	public static final Item chickenlauncher = new AnimalLauncherItem(new Item.Properties().group(TestItemGroup.instance));
-	public static final Item staff_of_creation = new StaffOfCreationItem(new Item.Properties().group(TestItemGroup.instance));
+	public static final Item book_of_creation = new BookOfCreation(new Item.Properties().group(TestItemGroup.instance));
 	public static final Item dragonfireballwand = new DragonBallStaff(new Item.Properties().group(TestItemGroup.instance).rarity(Rarity.EPIC));
 	
 	//Armour
@@ -95,7 +95,7 @@ public class ItemInit
 				debug_le_stick.setRegistryName(TestMod.location("debug_le_stick")),
 				dragonfireballwand.setRegistryName(TestMod.location("dragonfireballwand")),
 				chickenlauncher.setRegistryName(TestMod.location("chickenlauncher")),
-				staff_of_creation.setRegistryName(TestMod.location("staff_of_creation"))
+				book_of_creation.setRegistryName(TestMod.location("book_of_creation"))
 		);
 		
 		TestMod.LOGGER.info("Items Registered");

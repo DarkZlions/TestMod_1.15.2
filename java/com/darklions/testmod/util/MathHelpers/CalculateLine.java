@@ -3,11 +3,11 @@ package com.darklions.testmod.util.MathHelpers;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CalcCoordinates 
+public class CalculateLine 
 {
 	private List<Vec3> CoordsVec3;
 
-	public CalcCoordinates(Vec3 p1, Vec3 p2)
+	public CalculateLine(Vec3 p1, Vec3 p2)
 	{
 		this.CoordsVec3 = CoordinatesVec3(p1, p2);
 	}
@@ -36,7 +36,7 @@ public class CalcCoordinates
 		float newY;
 		float newZ;
 		
-		CalcNumbers calc = new CalcNumbers();
+		CalcHelpers calc = new CalcHelpers();
 		
 		List<Vec3> coord = new ArrayList<Vec3> ();
 		

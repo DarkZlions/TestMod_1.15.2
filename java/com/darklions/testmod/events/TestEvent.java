@@ -7,6 +7,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.goal.CreeperSwellGoal;
 import net.minecraft.entity.ai.goal.Goal.Flag;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
@@ -48,7 +49,7 @@ public class TestEvent
 			entity = (MobEntity) event.getEntity();
 			//World world = entity.getEntityWorld();
 			entity.targetSelector.addGoal(-1, new NearestAttackableTargetGoal<>(entity, MobEntity.class, false, true));
-
+			
 			if(entity.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE) == null)
 			{
 				try
