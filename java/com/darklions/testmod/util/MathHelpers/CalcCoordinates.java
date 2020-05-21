@@ -36,24 +36,26 @@ public class CalcCoordinates
 		float newY;
 		float newZ;
 		
+		CalcNumbers calc = new CalcNumbers();
+		
 		List<Vec3> coord = new ArrayList<Vec3> ();
 		
-		CalcBigNumbers calcX = new CalcBigNumbers(p1.X(), p2.X());
-		CalcBigNumbers calcY = new CalcBigNumbers(p1.Y(), p2.Y());
-		CalcBigNumbers calcZ = new CalcBigNumbers(p1.Z(), p2.Z());
+		float[] calcX = calc.CalcBiggerNumber(p1.X(), p2.X());
+		float[] calcY = calc.CalcBiggerNumber(p1.Y(), p2.Y());
+		float[] calcZ = calc.CalcBiggerNumber(p1.Z(), p2.Z());
 		
-		x1 = calcX.ReturnBig();
-		x2 = calcX.ReturnSmall();
+		x1 = calcX[0];
+		x2 = calcX[1];
 		
-		y1 = calcY.ReturnBig();
-		y2 = calcY.ReturnSmall();
+		y1 = calcY[0];
+		y2 = calcY[1];
 		
-		z1 = calcZ.ReturnBig();
-		z2 = calcZ.ReturnSmall();
+		z1 = calcZ[0];
+		z2 = calcZ[1];
 		
-		newX = x2;
-		newY = y2;
-		newZ = z2;
+		newX = p1.X();
+		newY = p1.Y();
+		newZ = p1.Z();
 		
 		sX = x1 - x2;
 		sY = y1 - y2;
@@ -67,9 +69,10 @@ public class CalcCoordinates
 		
 		for(int i = 0; i < A; i++)
 		{
-			newX = newX + asX;
-			newY = newY + asY;
-			newZ = newZ + asZ;
+			newX = calc.IfMinusNumber(p1.X(), p2.X()) ? newX - asX : newX + asX;
+			newY = calc.IfMinusNumber(p1.Y(), p2.Y()) ? newY - asY : newY + asY;
+			newZ = calc.IfMinusNumber(p1.Z(), p2.Z()) ? newZ - asZ : newZ + asZ;
+			
 			coord.add(new Vec3(newX, newY, newZ));
 		}
 		

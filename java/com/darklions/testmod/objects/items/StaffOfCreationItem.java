@@ -42,10 +42,10 @@ public class StaffOfCreationItem extends Item
 		}
 		else
 		{
-			RayTraceResult result = CustomRayTraceResult.CustomrayTrace(worldIn, playerIn, FluidMode.SOURCE_ONLY, 10D);
+			RayTraceResult result = CustomRayTraceResult.CustomrayTrace(worldIn, playerIn, FluidMode.SOURCE_ONLY, 15D);
 			
 			BlockPos TargetPos = new BlockPos(result.getHitVec().x, result.getHitVec().y, result.getHitVec().z);
-			BlockPos playerPos = playerIn.getPosition();
+			BlockPos playerPos = playerIn.getPosition().down();
 			
 			Vec3 p1 = new Vec3(TargetPos.getX(), TargetPos.getY(), TargetPos.getZ());
 			Vec3 p2 = new Vec3(playerPos.getX(), playerPos.getY(), playerPos.getZ());
