@@ -3,6 +3,7 @@ package com.darklions.testmod.util.helpers;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import com.darklions.testmod.objects.items.BookOfCreation;
 import com.darklions.testmod.objects.tileentity.QuarryTileEntity;
 
 import net.minecraft.item.Item;
@@ -24,7 +25,6 @@ public class NBTHelper
 		{
 			return writeQuarry((QuarryTileEntity)o);
 		}
-		
 		return null;
 	}
 	

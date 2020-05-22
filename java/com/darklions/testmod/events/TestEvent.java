@@ -1,6 +1,7 @@
 package com.darklions.testmod.events;
 
 import com.darklions.testmod.TestMod;
+import com.darklions.testmod.objects.items.BookOfCreation;
 
 import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.Entity;
@@ -12,10 +13,17 @@ import net.minecraft.entity.ai.goal.Goal.Flag;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.passive.fish.CodEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -106,15 +114,35 @@ public class TestEvent
 		
 		if(entity instanceof AbstractArrowEntity)
 		{
-			world.createExplosion(entity, DamageSource.causeExplosionDamage(new Explosion(world, entity, 0, 0, 0, 0, false, null)), entity.getPosX(), entity.getPosY(), entity.getPosZ(), 5, true, Explosion.Mode.BREAK);
+			world.createExplosion(
+					entity,
+					DamageSource.causeExplosionDamage(new Explosion(world, entity, 0, 0, 0, 0, false, null)),
+					entity.getPosX(),
+					entity.getPosY(),
+					entity.getPosZ(),
+					5,
+					true, Explosion.Mode.BREAK);
+			
 			entity.remove();
 		}
 	}
-	/*
+
 	@SubscribeEvent
-	public static void PlayerFloatEvent(PlayerTickEvent event)
+	public static void PlayerEvent(PlayerTickEvent event)
 	{
+		PlayerEntity player = event.player;
+		World world = player.getEntityWorld();
 		
+		if(player.isSleeping())
+		{
+			player.sendMessage(new StringTextComponent("You better leave this bed or something terrible will happen"));
+		}
+		
+		if(player.isPlayerFullyAsleep())
+		{
+			world.createExplosion(null, player.getPosX(), player.getPosY(), player.getPosZ(), 10, Explosion.Mode.BREAK);
+		}
+		
+		player.getAttribute(SharedMonsterAttributes.ATTACK_SPEED).setBaseValue(999);
 	}
-	*/
 }
